@@ -1,7 +1,7 @@
 import jieba
 from flask import Flask, redirect, render_template, request, url_for
 
-from search_engine.model import Word2Vec, BM25
+from search_engine.model import BM25, Word2Vec
 from search_engine.search import SearchEngine
 from search_engine.spider import Spider
 from utils.logger import Logger

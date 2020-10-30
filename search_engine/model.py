@@ -1,4 +1,5 @@
 import math
+
 import numpy as np
 from gensim.models import Word2Vec as W2V
 from sklearn.feature_extraction.text import TfidfVectorizer
