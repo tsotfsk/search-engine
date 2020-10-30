@@ -1,0 +1,27 @@
+# overall settings
+log_path: ./log.txt
+data_path: ./data
+model: bm25  # word2vec
+topk: 5
+real_time: False
+server:
+  ip_addr: 127.0.0.1
+  port: 23333
+
+# spider settings
+xml_path: ./web
+root: https://www.guancha.cn
+wait_time: 0.01
+num_pages: 15
+catalogue: GuoJi%C2%B7ZhanLue
+
+# model settings
+word2vec:
+  window_size: 5
+  embedding_size: 64
+  epochs: 20
+  use_weight: False  # tf-idf weight
+  use_normal: True
+bm25:
+  k: 1.5
+  b: 0.75

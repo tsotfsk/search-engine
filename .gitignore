@@ -1,0 +1,5 @@
+*.xml
+*.pyc
+*.pkl
+.vscode/
+*.log
