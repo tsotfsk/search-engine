@@ -10,7 +10,6 @@
     <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-
 <body ng-controller="ctrl">
     <div class="container">
         <br>
@@ -30,7 +29,7 @@
             <p><a href="{{ doc.url }}" target="_blank">{{ doc.title|safe }}</a></p>
             <p>{{doc.datetime}}</p>
             <p>
-                {{doc.abst}}
+                {{doc.abst|safe}}
             </p>
             <br>
             {% endfor %}

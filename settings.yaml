@@ -1,5 +1,5 @@
 # overall settings
-log_path: ./log.txt
+log_path: ./search.log
 data_path: ./data
 model: bm25  # word2vec
 topk: 5
@@ -20,7 +20,6 @@ word2vec:
   window_size: 5
   embedding_size: 64
   epochs: 20
-  use_weight: False  # tf-idf weight
   use_normal: True
 bm25:
   k: 1.5

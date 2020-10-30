@@ -29,18 +29,17 @@ def search(query):
 
 def highlight(docs, terms):
     result = []
-    print()
     for doc in docs:
-        content = doc.get('title')
         for term in terms:
-            content = content.replace(term, '<em><font color="red">{}</font></em>'.format(term))
+            doc['abst'] = doc['abst'].replace(term, '<em><font color="red">{}</font></em>'.format(term))
+            doc['title'] = doc['title'].replace(term, '<em><font color="red">{}</font></em>'.format(term))
         result.append(doc)
     return result
 
 
 if __name__ == "__main__":
     config = load_yaml('settings.yaml')
-    logger = Logger('./ir&ie.log')
+    logger = Logger(config['log_path'])
 
     # 启动爬虫
     if config['real_time'] is True:
@@ -48,9 +47,9 @@ if __name__ == "__main__":
 
     # 选择算法
     if config['model'].lower() == 'bm25':
-        model = Word2Vec(config, logger)
-    elif config['model'].lower() == 'word2vec':
         model = BM25(config, logger)
+    elif config['model'].lower() == 'word2vec':
+        model = Word2Vec(config, logger)
 
     # 启动搜索引擎
     net = config['server']

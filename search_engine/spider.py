@@ -15,9 +15,12 @@ class Spider(object):
 
         self.logger = logger
 
+        # crawl news
         self.page_lists = self._get_page_lists()
         self.news_lists = self._get_news_lists()
         self.xmls, self.texts = self._crawl_news()
+
+        # save result
         self._save_data()
 
     def _get_page_lists(self):

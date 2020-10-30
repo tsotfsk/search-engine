@@ -55,6 +55,20 @@ def dict2xml(info_dict):
     return ET.ElementTree(doc)
 
 
+def id2dict(xml_path, idx):
+    root = ET.parse(xml_path + f'/{idx}.xml').getroot()
+    body = root.find('body').text
+    abst = body[:120] + '...'
+    info_dict = {
+        'title': root.find('title').text,
+        'abst': abst,
+        'id': int(root.find('id').text),
+        'url': root.find('url').text,
+        'datetime': root.find('datetime').text,
+    }
+    return info_dict
+
+
 def save_xml(xml, save_path):
     xml.write(save_path, encoding='utf-8', xml_declaration=True)
 
@@ -88,12 +102,8 @@ def normal(array, eps=1e-15):
     return array / lens
 
 
-def cut_for_search(sentence, stop_words=None):
+def cut_for_search(query, stop_words=None):
     if stop_words is None:
         stop_words = []
-    sentence = jieba.cut_for_search(sentence)
-    return list(set(sentence) - set(stop_words))
-
-
-def load_embedding(data_path):
-    pass
+    query = jieba.cut_for_search(query)
+    return list(set(query) - set(stop_words))
