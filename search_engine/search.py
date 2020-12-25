@@ -1,3 +1,5 @@
+import os
+
 from utils.tools import cut_for_search, id2dict
 
 
@@ -9,8 +11,17 @@ class SearchEngine(object):
         self.xml_path = config['xml_path']
         self.topk = config['topk']
 
+        self._check_path()
+
         self.logger = logger
         self.model = model
+
+    def _check_path(self):
+        if not os.path.exists(self.xml_path):
+            os.mkdir(self.xml_path)
+
+        if not os.path.exists(self.data_path):
+            os.mkdir(self.data_path)
 
     def search(self, query):
         query = cut_for_search(query)
